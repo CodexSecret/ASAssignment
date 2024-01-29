@@ -1,0 +1,29 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">User Details</h2>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">First Name: @Model.FirstName</p>
+                    <p class="card-text">Last Name: @Model.LastName</p>
+                    <p class="card-text">Gender: @Model.Gender</p>
+                    <p class="card-text">Date of Birth: @Model.DateOfBirth.ToString("yyyy-MM-dd")</p>
+                    <p class="card-text">NRIC: @Model.DecryptedNRIC</p>
+                    @if (!string.IsNullOrEmpty(Model.ResumeFilePath) && !string.IsNullOrEmpty(Model.ResumeFileName))
+                    {
+                        <p>Resume: <a href="~/uploads/@Model.ResumeFilePath" target="_blank">@Model.ResumeFileName</a></p>
+                    }
+                    <p class="card-text">About Me: @Model.WhoAmI</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
